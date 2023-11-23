@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Operations</title>
+    <script>
+        function calculateFactorial() {
+            let number = parseInt(document.getElementById("numberInput").value);
+            let result = 1;
+            for (let i = 2; i <= number; i++) {
+                result *= i;
+            }
+            document.getElementById("result").innerHTML = `Factorial of ${number} is: ${result}`;
+        }
+
+        function calculateFibonacci() {
+            let number = parseInt(document.getElementById("numberInput").value);
+            let fibonacciSeries = "Fibonacci series up to " + number + ": ";
+            let a = 0, b = 1, temp;
+            while (a <= number) {
+                fibonacciSeries += a + " ";
+                temp = a + b;
+                a = b;
+                b = temp;
+            }
+            document.getElementById("result").innerHTML = fibonacciSeries;
+        }
+
+        function calculatePrimes() {
+            let number = parseInt(document.getElementById("numberInput").value);
+            let primes = "Prime numbers up to " + number + ": ";
+            for (let i = 2; i <= number; i++) {
+                let isPrime = true;
+                for (let j = 2; j < i; j++) {
+                    if (i % j === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime) {
+                    primes += i + " ";
+                }
+            }
+            document.getElementById("result").innerHTML = primes;
+        }
+
+        function checkPalindrome() {
+            let number = document.getElementById("numberInput").value;
+            let reversedNumber = number.split('').reverse().join('');
+            if (number === reversedNumber) {
+                document.getElementById("result").innerHTML = number + " is a palindrome.";
+            } else {
+                document.getElementById("result").innerHTML = number + " is not a palindrome.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="numberInput" placeholder="Enter a number">
+    <br><br>
+    <button onclick="calculateFactorial()">Factorial</button>
+    <button onclick="calculateFibonacci()">Fibonacci</button>
+    <button onclick="calculatePrimes()">Prime</button>
+    <button onclick="checkPalindrome()">Palindrome</button>
+    <br><br>
+    <p id="result"></p>
+</body>
+</html>
